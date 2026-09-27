@@ -1,0 +1,99 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test-and-report:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-jammy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # No deploy step here: PRs (especially from forks) must never get
+      # write access to the public surge.sh domain or GitHub Pages history.
+      # Tests run against the already-deployed live site.
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Generate standalone Allure report
+        if: always()
+        uses: simple-elf/allure-report-action@master
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
+          keep_reports: 1
+
+      - name: Upload Allure report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-pr-${{ github.event.pull_request.number }}
+          path: allure-report
+          retention-days: 14
+
+      - name: Summarize results in PR comment
+        if: always() && github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let summary = '_No Allure summary found._';
+            try {
+              const raw = fs.readFileSync('allure-report/widgets/summary.json', 'utf8');
+              const data = JSON.parse(raw);
+              const s = data.statistic;
+              summary = [
+                '| Passed | Failed | Broken | Skipped | Total | Duration |',
+                '| --- | --- | --- | --- | --- | --- |',
+                `| ${s.passed} | ${s.failed} | ${s.broken} | ${s.skipped} | ${s.total} | ${(data.time.duration / 1000).toFixed(1)}s |`,
+              ].join('\n');
+            } catch (e) {
+              summary = `_Could not read Allure summary: ${e.message}_`;
+            }
+
+            const body = [
+              '### Playwright + Allure results',
+              summary,
+              '',
+              'Download the full Allure report (with graphs) from this run\'s build artifacts.',
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes('Playwright + Allure results'));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

@@ -3,5 +3,11 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+allure-results/
+allure-report/
 .DS_Store
 *.log
+
+# Never let future contents of the confidential interview clone leak.
+# (Its README.md is already tracked and harmless; only *new* files here are protected.)
+targets/codility-interview-clone/

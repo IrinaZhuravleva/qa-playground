@@ -8,11 +8,13 @@
     "test:ui-elements": "playwright test tests/ui-elements-practice",
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy:target": "npx --yes surge@0.23.1 targets/ui-elements-practice qa-playground-ui.surge.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "@types/node": "^22.0.0",
+    "allure-playwright": "^3.0.0",
     "typescript": "^5.9.2"
   }
 }
