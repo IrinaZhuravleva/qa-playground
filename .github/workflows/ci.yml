@@ -14,7 +14,7 @@ jobs:
   test-and-report:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       # Docker's default /dev/shm is 64MB, too small for Chromium/Firefox/WebKit
       # running in parallel — causes renderer crashes mid-run. --ipc=host is
       # Playwright's documented fix for containerized CI.
