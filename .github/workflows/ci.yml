@@ -19,10 +19,6 @@ jobs:
       # running in parallel — causes renderer crashes mid-run. --ipc=host is
       # Playwright's documented fix for containerized CI.
       options: --ipc=host
-      env:
-        # Firefox refuses to launch when $HOME isn't owned by the current
-        # user, which is the case by default in this container image.
-        HOME: /root
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,6 +39,12 @@ jobs:
         run: npm run deploy:target
 
       - name: Run Playwright tests
+        env:
+          # Firefox refuses to launch when $HOME isn't owned by the current
+          # user. The GitHub Actions runner forces HOME=/github/home for
+          # container jobs regardless of container/job-level env, so this
+          # has to be overridden at the step level to take effect.
+          HOME: /root
         run: npx playwright test
 
       - name: Get previous Allure history
