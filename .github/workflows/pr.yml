@@ -14,8 +14,6 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-jammy
       options: --ipc=host
-      env:
-        HOME: /root
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,6 +31,8 @@ jobs:
       # write access to the public surge.sh domain or GitHub Pages history.
       # Tests run against the already-deployed live site.
       - name: Run Playwright tests
+        env:
+          HOME: /root
         run: npx playwright test
 
       - name: Generate standalone Allure report
