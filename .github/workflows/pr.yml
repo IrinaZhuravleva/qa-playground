@@ -12,7 +12,7 @@ jobs:
   test-and-report:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
       options: --ipc=host
     steps:
       - name: Checkout
