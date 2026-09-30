@@ -35,13 +35,21 @@ jobs:
           HOME: /root
         run: npx playwright test
 
+      - name: Setup Java (required by Allure CLI)
+        if: always()
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
       - name: Generate standalone Allure report
         if: always()
-        uses: simple-elf/allure-report-action@master
-        with:
-          allure_results: allure-results
-          allure_report: allure-report
-          keep_reports: 1
+        env:
+          RUN_NUM: ${{ github.run_number }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+          SERVER_URL: ${{ github.server_url }}
+        run: ./scripts/allure-report.sh
 
       - name: Upload Allure report artifact
         if: always()
