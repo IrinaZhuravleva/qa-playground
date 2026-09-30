@@ -55,14 +55,24 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
+      - name: Setup Java (required by Allure CLI)
+        if: always()
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
       - name: Generate Allure report (with history)
         if: always()
-        uses: simple-elf/allure-report-action@master
-        with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_history: allure-history
-          keep_reports: 40
+        env:
+          GH_PAGES: gh-pages
+          ALLURE_HISTORY: allure-history
+          KEEP_REPORTS: 40
+          RUN_NUM: ${{ github.run_number }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+          SERVER_URL: ${{ github.server_url }}
+        run: ./scripts/allure-report.sh
 
       - name: Publish Allure dashboard to GitHub Pages
         if: always()
