@@ -62,7 +62,7 @@ npm run deploy:target
 > **Known local environment issue:** on this machine, Playwright's cached
 > Firefox build fails to launch (`Could not find profile folder`) even with a
 > freshly-created, writable profile directory — reproduced outside Playwright
-> too, so it's a local Firefox/macOS build issue, not a test bug. All 39
+> too, so it's a local Firefox/macOS build issue, not a test bug. All 48
 > `ui-elements-practice` tests pass cleanly on **Chromium** and **WebKit**
 > (`npx playwright test --project=chromium --project=webkit`). CI runs on
 > Linux and isn't affected — Firefox runs there normally. Worth a
