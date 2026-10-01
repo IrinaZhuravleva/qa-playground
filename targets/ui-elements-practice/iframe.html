@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>iFrame Content</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, Helvetica, sans-serif; color: #222; }
+        h2 { margin-top: 0; }
+        .field { margin-bottom: 12px; }
+        label { display: inline-block; min-width: 80px; }
+        table { border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #999; padding: 6px 12px; text-align: left; }
+        #iframe-error { color: #c00; }
+        #iframe-result { margin-top: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Registration form</h2>
+
+    <form id="iframe-form" novalidate>
+        <div class="field">
+            <label for="iframe-name">Name</label>
+            <input id="iframe-name" type="text" placeholder="Enter name">
+        </div>
+        <div class="field">
+            <label for="iframe-country">Country</label>
+            <select id="iframe-country">
+                <option value="">-- select --</option>
+                <option value="uk">UK</option>
+                <option value="us">USA</option>
+                <option value="de">Germany</option>
+            </select>
+        </div>
+        <div class="field">
+            <input id="iframe-agree" type="checkbox">
+            <label for="iframe-agree">I agree to the terms</label>
+        </div>
+        <button id="iframe-submit" type="submit">Submit</button>
+        <p id="iframe-error" role="alert" hidden>Please enter your name</p>
+    </form>
+
+    <p id="iframe-result"></p>
+
+    <table id="iframe-table">
+        <caption>Premier League</caption>
+        <thead>
+            <tr><th>Club</th><th>Points</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Liverpool</td><td>84</td></tr>
+            <tr><td>Arsenal</td><td>74</td></tr>
+            <tr><td>Chelsea</td><td>69</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('iframe-form');
+        const error = document.getElementById('iframe-error');
+        const result = document.getElementById('iframe-result');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('iframe-name').value.trim();
+            const country = document.getElementById('iframe-country').value;
+            const agreed = document.getElementById('iframe-agree').checked;
+
+            if (!name) {
+                error.hidden = false;
+                result.textContent = '';
+                return;
+            }
+            error.hidden = true;
+            result.textContent = agreed
+                ? `Submitted: ${name} - ${country}`
+                : 'Please accept the terms';
+        });
+    </script>
+</body>
+</html>

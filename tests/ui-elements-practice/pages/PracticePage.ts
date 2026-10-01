@@ -34,6 +34,7 @@ export class PracticePage {
   readonly mouseHoverReloadLink: Locator;
 
   readonly coursesIframe: Locator;
+  readonly portfolioIframe: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -83,6 +84,7 @@ export class PracticePage {
     this.mouseHoverReloadLink = this.mouseHoverMenu.getByRole('link', { name: 'Reload' });
 
     this.coursesIframe = page.locator('#courses-iframe');
+    this.portfolioIframe = page.locator('#portfolio-iframe');
   }
 
   async goto(): Promise<void> {
