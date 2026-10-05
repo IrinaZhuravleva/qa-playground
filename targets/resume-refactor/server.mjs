@@ -1,10 +1,12 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { dirname, extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { engines } from './engines.mjs';
 
-const dir = dirname(fileURLToPath(import.meta.url));
+// The page lives in the practice site so it is served from the same place as the other practice pages.
+const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'ui-elements-practice');
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript' };
 const port = Number(process.env.PORT ?? 4173);
 const engineName = process.env.ENGINE ?? 'mock';
 const engine = engines[engineName];
@@ -30,9 +32,6 @@ function readBody(req) {
 }
 
 createServer(async (req, res) => {
-  if (req.method === 'GET' && (req.url === '/' || req.url === '/index.html')) {
-    return send(res, 200, await readFile(join(dir, 'index.html')), 'text/html; charset=utf-8');
-  }
   if (req.method === 'GET' && req.url === '/api/health') {
     return send(res, 200, { ok: true, engine: engineName });
   }
@@ -54,6 +53,15 @@ createServer(async (req, res) => {
       return send(res, 200, { result: await engine({ resume, vacancy }), engine: engineName });
     } catch (e) {
       return send(res, 502, { error: `Model call failed: ${e.message}` });
+    }
+  }
+  if (req.method === 'GET') {
+    const name = new URL(req.url, 'http://x').pathname.replace(/^\/$/, '/index.html');
+    const ext = extname(name);
+    if (types[ext] && !name.includes('..')) {
+      try {
+        return send(res, 200, await readFile(join(dir, name)), types[ext]);
+      } catch {}
     }
   }
   send(res, 404, { error: 'Not found' });

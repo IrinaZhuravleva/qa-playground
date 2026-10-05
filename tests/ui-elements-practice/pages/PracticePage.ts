@@ -33,7 +33,7 @@ export class PracticePage {
   readonly mouseHoverTopLink: Locator;
   readonly mouseHoverReloadLink: Locator;
 
-  readonly coursesIframe: Locator;
+  readonly localIframe: Locator;
   readonly portfolioIframe: Locator;
 
   constructor(page: Page) {
@@ -83,7 +83,7 @@ export class PracticePage {
     this.mouseHoverTopLink = this.mouseHoverMenu.getByRole('link', { name: 'Top' });
     this.mouseHoverReloadLink = this.mouseHoverMenu.getByRole('link', { name: 'Reload' });
 
-    this.coursesIframe = page.locator('#courses-iframe');
+    this.localIframe = page.locator('#local-iframe');
     this.portfolioIframe = page.locator('#portfolio-iframe');
   }
 
