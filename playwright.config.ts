@@ -65,7 +65,7 @@ export default defineConfig({
       ? [
           {
             name: 'resume-ai',
-            testMatch: /resume-refactor\/ai\.spec\.ts/,
+            testMatch: /resume-refactor\/(ai|judge)\.spec\.ts/,
             timeout: 180_000,
             retries: 0,
             use: { baseURL: resumeBaseUrl },

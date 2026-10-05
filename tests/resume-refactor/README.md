@@ -82,7 +82,7 @@ Start with 5-8 fictional cases.
 
 ## Status and how to run
 
-Stage 1 is implemented.
+Stages 1 and 2 are implemented.
 
 - `targets/ui-elements-practice/resume.html`: the page, served by the local server
   together with the other practice pages.
@@ -92,6 +92,10 @@ Stage 1 is implemented.
   - `checks.spec.ts`: tests of the deterministic checks on known good and bad outputs
   - `api.spec.ts`, `ui.spec.ts`: validation and UI behavior on mocked responses
   - `ai.spec.ts`: the golden set (`golden/cases.json`) and edge cases against a real model
+  - `judge.spec.ts`: calibration of the LLM judge on known good and bad rewrites
+  - `lib/judge.ts`: the rubric, JSON verdict parsing, thresholds, judge model call
+    (`JUDGE_ENGINE`, `JUDGE_MODEL`; default `claude -p` with `sonnet`, a stronger
+    model than the `haiku` rewriter)
   - `lib/checks.ts`: facts preserved, fabricated tools, forbidden content,
     vacancy keywords, structure, length
 
@@ -102,8 +106,21 @@ ENGINE=api ANTHROPIC_API_KEY=... npm run test:resume:ai   # Claude API instead
 npm run resume:serve      # run the page locally at http://localhost:4173
 ```
 
-Not yet done: the LLM judge with a rubric (stage 2), stability runs and run
-comparison (stage 3).
+Not yet done: stability runs and run comparison (stage 3).
+
+### What the evaluation found (2026-10-05)
+
+The first judge runs found real defects of the rewrite prompt that the
+deterministic checks missed: the headline retitled to match the vacancy
+("Тестировщик" became "QA Automation Engineer"), strengthened verbs ("wrote"
+became "developed and maintained", "reported" became "managed"), a Russian
+university name garbled with Latin letters, and a summary claiming a
+specialization or presenting a student project as work experience. Fixing them
+in the prompt made the model too cautious (relevance 2/5, near-copies), and the
+rubric itself pulled in two directions (relevance asked for "CI/CD" while
+no_fabrication punished it). The final prompt and rubric balance both. This
+faithfulness vs. tailoring trade-off is the main thing to watch when changing
+the prompt.
 
 Known limits of the deterministic checks: fabricated-tool detection only knows
 the terms in `TECH_VOCABULARY` (extend it per case), and fact checks are

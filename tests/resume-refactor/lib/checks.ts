@@ -49,7 +49,7 @@ export function structureProblems(output: string): string[] {
   const headings = lines.filter((l, i) => {
     if (/^#{1,3}\s+\S/.test(l) || /^\*\*[^*]+\*\*:?$/.test(l)) return true;
     const plainTitle = l.length >= 2 && l.length <= 30 && !/^[-*•#]|[:(),.]/.test(l);
-    return plainTitle && i > 0 && lines[i - 1] === '' && !!lines[i + 1];
+    return plainTitle && i > 0 && lines[i - 1] === '' && lines.slice(i + 1).some((x) => x !== '');
   });
   if (headings.length < 2) problems.push(`expected at least 2 section headings, found ${headings.length}`);
   return problems;

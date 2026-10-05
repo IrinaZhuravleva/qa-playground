@@ -9,6 +9,7 @@ import {
   nonEmpty,
   structureProblems,
 } from './lib/checks';
+import { belowThreshold, judge, type Criterion } from './lib/judge';
 
 type GoldenCase = {
   id: string;
@@ -18,6 +19,7 @@ type GoldenCase = {
   expectedFacts: string[];
   keywords: string[];
   forbidden: string[];
+  rubricMin?: Partial<Record<Criterion, number>>;
 };
 
 const cases: GoldenCase[] = JSON.parse(
@@ -47,6 +49,10 @@ test.describe('golden set', () => {
       expect.soft(missingKeywords(output, c.keywords), 'relevant vacancy keywords used').toEqual([]);
       expect.soft(structureProblems(output), 'structure').toEqual([]);
       expect.soft(lengthProblems(output, c.resume), 'length').toEqual([]);
+
+      const verdict = await judge({ resume: c.resume, vacancy: c.vacancy, output });
+      await testInfo.attach('verdict.json', { body: JSON.stringify(verdict, null, 2), contentType: 'application/json' });
+      expect.soft(belowThreshold(verdict, c.rubricMin), 'LLM judge rubric').toEqual([]);
     });
   }
 });
