@@ -77,3 +77,31 @@ Start with 5-8 fictional cases.
    fabrication, injection, edge cases).
 2. Judge with the rubric, plus tests of the judge itself.
 3. Stability runs and run comparison, with a report in Allure.
+
+## Status and how to run
+
+Stage 1 is implemented.
+
+- `targets/resume-refactor`: the page (`index.html`), the server (`server.mjs`)
+  and the engines (`engines.mjs`: `mock`, `claude-cli`, `api`).
+- `tests/resume-refactor`:
+  - `checks.spec.ts`: tests of the deterministic checks on known good and bad outputs
+  - `api.spec.ts`, `ui.spec.ts`: validation and UI behavior on mocked responses
+  - `ai.spec.ts`: the golden set (`golden/cases.json`) and edge cases against a real model
+  - `lib/checks.ts`: facts preserved, fabricated tools, forbidden content,
+    vacancy keywords, structure, length
+
+```bash
+npm run test:resume       # checks + UI/API on the mock engine, free, runs in CI
+npm run test:resume:ai    # real model (claude -p by default), manual only
+ENGINE=api ANTHROPIC_API_KEY=... npm run test:resume:ai   # Claude API instead
+npm run resume:serve      # run the page locally at http://localhost:4173
+```
+
+Not yet done: the LLM judge with a rubric (stage 2), stability runs and run
+comparison (stage 3).
+
+Known limits of the deterministic checks: fabricated-tool detection only knows
+the terms in `TECH_VOCABULARY` (extend it per case), and fact checks are
+substring matches, so they catch dropped facts but not subtle rewording errors.
+Those need the judge.
