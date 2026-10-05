@@ -1,0 +1,79 @@
+# Resume Refactor: AI evaluation test plan
+
+Practice material for testing an AI feature. The user pastes a resume and a job
+description, a real model rewrites the resume for that job, and automated tests
+check the result the way LLM applications are usually evaluated.
+
+All resumes and vacancies in this suite are fictional.
+
+## Coverage
+
+Every item of the evaluation checklist is covered. Checks are either
+deterministic (cheap, stable) or scored by an LLM judge.
+
+| Checklist item | How it is tested | Type |
+|---|---|---|
+| Stability (same CV, N runs) | Run the same input 3-5 times. Compare the set of facts (dates, companies, titles) and the spread of judge scores | deterministic + judge |
+| Important information is preserved | Facts are extracted from the reference CV in advance. Every fact must appear in the output (regex / substring) | deterministic |
+| No invented experience or skills | Skills and companies in the output must be a subset of the input. Trap case: the vacancy requires something the candidate lacks, and the model must not attribute it to them | deterministic + judge |
+| Match to the vacancy requirements | Vacancy keywords the candidate really has appear in the text. Judge scores relevance against a rubric | deterministic + judge |
+| Experience is reworded correctly | Judge compares before and after: meaning kept, wording stronger, no inflation (e.g. "participated" must not become "led") | judge |
+| Different formats and structures | Inputs: bullet list, plain prose, table, Russian and English, no sections. The output must stay meaningful and structured | deterministic + judge |
+| Match to expected result / criteria | Rubric with a threshold (see LLM-as-judge) | judge |
+| Different prompts and inputs | System prompt variants and parameters. Inputs: empty, very long, prompt injection ("ignore your instructions") | deterministic |
+| Comparing runs | The report has a table of runs: judge scores and fact differences. Across models or prompts if added later | report |
+| Edge cases and hallucinations | Empty resume, no experience, vacancy unrelated to the profile, contradictory dates, text in another language | mixed |
+
+## Golden set
+
+A folder of JSON cases. Each case has:
+
+- `resume`: the input resume
+- `vacancy`: the input job description
+- `expected_facts`: what must survive the rewrite
+- `forbidden`: what must not appear (e.g. a specific invented technology)
+- `rubric_min`: minimum judge scores
+
+Start with 5-8 fictional cases.
+
+## LLM-as-judge
+
+- Rubric of 4-5 criteria, scale 1-5: fact preservation, no fabrication,
+  relevance to the vacancy, quality of wording, structure.
+- The judge returns strict JSON with a score and a justification per criterion.
+- Pass threshold, for example, 4 out of 5.
+- The judge should run on a different or stronger model than the one doing the
+  rewrite, otherwise it overrates its own answers.
+- The judge is non-deterministic too, so the judge itself is tested on known bad
+  outputs: a resume with an invented fact must receive a low score.
+
+## Architecture
+
+- `targets/resume-refactor`: a page with two fields (resume, vacancy), a
+  Refactor button and a result area.
+- A small local Node server calls the model. The API key stays in the server
+  environment and never reaches the browser or the public repository.
+- The server has a switchable engine: Claude API with `ANTHROPIC_API_KEY`, or
+  `claude -p` (Claude Code in non-interactive mode, uses the subscription,
+  local use only).
+- Fast UI tests (fields, button, loading state, API error) run against a mocked
+  response and do not call a model.
+
+## Cost and CI
+
+- Claude API usage is billed separately from a claude.ai / Claude Code
+  subscription. A key from console.anthropic.com and prepaid credits are needed.
+- A cheap model such as `claude-haiku-4-5-20251001` is enough for the rewrite.
+  One run of the suite costs cents, but the judge and the repeated runs for
+  stability multiply the number of calls.
+- Real-model checks live in a separate Playwright project, run manually and
+  nightly. Regular CI and PRs use mocks only.
+- A nightly real-model job needs an `ANTHROPIC_API_KEY` secret in GitHub and a
+  spending limit. Until then, run locally with `claude -p`.
+
+## Stages
+
+1. App, mocks, UI tests, golden set and deterministic checks (facts,
+   fabrication, injection, edge cases).
+2. Judge with the rubric, plus tests of the judge itself.
+3. Stability runs and run comparison, with a report in Allure.
