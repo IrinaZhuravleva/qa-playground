@@ -51,7 +51,7 @@ test.describe('Known defects on the practice page', () => {
   test('BUG: the courses iframe has no accessible name', async ({ page }) => {
     // No title attribute (and no aria-label) means a screen reader announces an
     // unlabeled "iframe" with no indication of what it contains.
-    await expect(page.locator('#courses-iframe')).not.toHaveAttribute('title');
-    await expect(page.locator('#courses-iframe')).not.toHaveAttribute('aria-label');
+    await expect(page.locator('#local-iframe')).not.toHaveAttribute('title');
+    await expect(page.locator('#local-iframe')).not.toHaveAttribute('aria-label');
   });
 });

@@ -30,7 +30,7 @@ Playwright's Firefox build fails to launch (`Could not find profile folder`),
 a local macOS/Firefox issue rather than a test bug. Firefox runs normally in
 CI (Linux container, `HOME=/root` set at step level).
 
-The suite is 48 tests per browser project (chromium, firefox, webkit).
+The suite is 49 tests per browser project (chromium, firefox, webkit).
 
 ## Approach
 
@@ -67,11 +67,11 @@ control.
 
 **iFrames.** The page has two, covered in [`iframe.spec.ts`](iframe.spec.ts):
 
-- *Local* (`#courses-iframe`, `src="./iframe.html"`): a page we own — a
+- *Local* (`#local-iframe`, `src="./iframe.html"`): a page we own — a
   registration form (name, country select, terms checkbox, validation
   message, result line) and a small table. It exists so frame behaviour can be
   tested deterministically, with no third-party site involved. Tests reach
-  into it with `page.frameLocator('#courses-iframe')` and cover the same
+  into it with `new PracticePage(page).localIframe.contentFrame()` and cover the same
   flows twice, once with CSS/id locators and once with user-facing ones
   (`getByLabel`, `getByRole`, `getByPlaceholder`), plus field state,
   validation errors, table cell/row lookup, and access by name via
@@ -117,7 +117,7 @@ so a fix to the page would turn a green test red instead of going unnoticed:
   returned).
 - **The `<iframe>`s have no accessible name** (no `title`, no
   `aria-label`) — a screen reader user hears an unlabeled "iframe" with no
-  clue what it embeds. Only `#courses-iframe` is asserted in
+  clue what it embeds. Only `#local-iframe` is asserted in
   `a11y-findings.spec.ts`; `#portfolio-iframe` has the same gap but isn't
   covered by a test yet.
 

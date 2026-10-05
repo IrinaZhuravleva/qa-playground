@@ -49,8 +49,10 @@ Start with 5-8 fictional cases.
 
 ## Architecture
 
-- `targets/resume-refactor`: a page with two fields (resume, vacancy), a
-  Refactor button and a result area.
+- `targets/ui-elements-practice/resume.html`: a page with two fields (resume,
+  vacancy), a Refactor button and a result area. It is also embedded as an
+  iframe on the practice site main page (`#resume-iframe`). Without a model
+  server (static host) it falls back to an in-browser mock ("Demo mode").
 - A small local Node server calls the model. The API key stays in the server
   environment and never reaches the browser or the public repository.
 - The server has a switchable engine: Claude API with `ANTHROPIC_API_KEY`, or
@@ -82,8 +84,10 @@ Start with 5-8 fictional cases.
 
 Stage 1 is implemented.
 
-- `targets/resume-refactor`: the page (`index.html`), the server (`server.mjs`)
-  and the engines (`engines.mjs`: `mock`, `claude-cli`, `api`).
+- `targets/ui-elements-practice/resume.html`: the page, served by the local server
+  together with the other practice pages.
+- `targets/resume-refactor`: the server (`server.mjs`) and the engines
+  (`engines.mjs`: `mock`, `claude-cli`, `api`).
 - `tests/resume-refactor`:
   - `checks.spec.ts`: tests of the deterministic checks on known good and bad outputs
   - `api.spec.ts`, `ui.spec.ts`: validation and UI behavior on mocked responses

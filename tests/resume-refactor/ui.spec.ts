@@ -7,7 +7,7 @@ const resumeText = 'Anna Petrova\nExperience\nDeveloper, Northwind Systems (2021
 const vacancyText = 'Backend Engineer\nRequirements: Java';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/resume.html');
 });
 
 test('shows the input fields and the Refactor button', async ({ page }) => {
@@ -125,4 +125,33 @@ test('works end to end against the mock engine of the local server', async ({ pa
 
   await expect(page.locator('#result')).toContainText('Tailored for: Backend Engineer');
   await expect(page.locator('#result')).toContainText('Northwind Systems');
+});
+
+test('shows which model engine the server uses', async ({ page }) => {
+  await expect(page.getByRole('note')).toContainText('Model: ');
+});
+
+test('falls back to demo mode when there is no model server', async ({ page }) => {
+  // What visitors get on the static practice site: /api is missing there.
+  await page.route('**/api/**', (route) => route.fulfill({ status: 404, body: 'Not found' }));
+  await page.goto('/resume.html');
+
+  await expect(page.getByRole('note')).toContainText('Demo mode');
+
+  await page.getByLabel('Resume').fill(resumeText);
+  await page.getByLabel('Job description').fill(vacancyText);
+  await page.getByRole('button', { name: 'Refactor' }).click();
+
+  await expect(page.locator('#result')).toContainText('Tailored for: Backend Engineer');
+});
+
+test('is embedded in the practice site main page as an iframe', async ({ page }) => {
+  await page.goto('/index.html');
+  const frame = page.frameLocator('#resume-iframe');
+
+  await frame.getByLabel('Resume').fill(resumeText);
+  await frame.getByLabel('Job description').fill(vacancyText);
+  await frame.getByRole('button', { name: 'Refactor' }).click();
+
+  await expect(frame.locator('#result')).toContainText('Northwind Systems');
 });

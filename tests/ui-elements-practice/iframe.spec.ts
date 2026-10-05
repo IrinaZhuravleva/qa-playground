@@ -9,11 +9,11 @@ test.describe('iFrame Example', () => {
   test('the iframe points at the local iframe page', async ({ page }) => {
     const practice = new PracticePage(page);
 
-    await expect(practice.coursesIframe).toHaveAttribute('src', './iframe.html');
+    await expect(practice.localIframe).toHaveAttribute('src', './iframe.html');
   });
 
   test('the form inside the iframe can be filled and submitted (CSS locators)', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await frame.locator('#iframe-name').fill('John');
     await frame.locator('#iframe-country').selectOption('uk');
@@ -24,7 +24,7 @@ test.describe('iFrame Example', () => {
   });
 
   test('the form inside the iframe can be filled and submitted (user-facing locators)', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await frame.getByLabel('Name').fill('Anna');
     await frame.getByLabel('Country').selectOption({ label: 'Germany' });
@@ -35,7 +35,7 @@ test.describe('iFrame Example', () => {
   });
 
   test('form fields inside the iframe reflect their state', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await expect(frame.getByPlaceholder('Enter name')).toBeEmpty();
     await expect(frame.getByRole('checkbox')).not.toBeChecked();
@@ -48,7 +48,7 @@ test.describe('iFrame Example', () => {
   });
 
   test('submitting an empty name shows a validation error', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await expect(frame.getByRole('alert')).toBeHidden();
     await frame.getByRole('button', { name: 'Submit' }).click();
@@ -58,7 +58,7 @@ test.describe('iFrame Example', () => {
   });
 
   test('submitting without accepting the terms is rejected', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await frame.getByLabel('Name').fill('John');
     await frame.getByRole('button', { name: 'Submit' }).click();
@@ -67,7 +67,7 @@ test.describe('iFrame Example', () => {
   });
 
   test('the table inside the iframe can be queried by cell and row', async ({ page }) => {
-    const frame = page.frameLocator('#courses-iframe');
+    const frame = new PracticePage(page).localIframe.contentFrame();
 
     await expect(frame.getByRole('cell', { name: 'Liverpool' })).toBeVisible();
 
@@ -77,11 +77,22 @@ test.describe('iFrame Example', () => {
 
   test('the iframe can be reached by its name attribute via page.frame()', async ({ page }) => {
     const practice = new PracticePage(page);
-    await expect(practice.coursesIframe).toBeVisible();
+    await expect(practice.localIframe).toBeVisible();
 
     const frame = page.frame({ name: 'iframe-name' });
     expect(frame).not.toBeNull();
     await expect(frame!.locator('h2')).toHaveText('Registration form');
+  });
+
+  test('the frame finishes loading and resolves to the local iframe page', async ({ page }) => {
+    const frame = page.frame({ name: 'iframe-name' });
+    expect(frame).not.toBeNull();
+
+    await frame!.waitForLoadState('domcontentloaded');
+
+    expect(frame!.url()).toMatch(/\/iframe\.html$/);
+    expect(frame!.parentFrame()).toBe(page.mainFrame());
+    expect(await frame!.title()).toBe('iFrame Content');
   });
 });
 
