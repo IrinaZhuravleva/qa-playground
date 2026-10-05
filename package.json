@@ -9,7 +9,10 @@
     "test:headed": "playwright test --headed",
     "test:report": "playwright show-report",
     "typecheck": "tsc --noEmit",
-    "deploy:target": "npx --yes surge@0.23.1 targets/ui-elements-practice qa-playground-ui.surge.sh"
+    "deploy:target": "npx --yes surge@0.23.1 targets/ui-elements-practice qa-playground-ui.surge.sh",
+    "test:resume": "playwright test --project=resume-checks --project=resume-app",
+    "test:resume:ai": "RESUME_AI=1 playwright test --project=resume-ai",
+    "resume:serve": "node targets/resume-refactor/server.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
