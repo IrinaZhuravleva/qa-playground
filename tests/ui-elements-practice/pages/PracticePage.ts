@@ -39,24 +39,11 @@ export class PracticePage {
   constructor(page: Page) {
     this.page = page;
 
-    // The radios/checkboxes have no accessible name: their <label for="..."> targets an
-    // id that doesn't exist on the input, and a *present* (even if broken) `for` attribute
-    // suppresses the browser's fallback to implicit wrapping-label association. That rules
-    // out getByRole(..., { name }) — see a11y-findings.spec.ts for a test documenting this.
-    // Radios only carry a `value`; checkboxes at least kept a real (if mislabeled) id.
-    const radioValueByLabel = { Radio1: 'radio1', Radio2: 'radio2', Radio3: 'radio3' } as const;
-    const checkboxIdByLabel = {
-      Option1: 'checkBoxOption1',
-      Option2: 'checkBoxOption2',
-      Option3: 'checkBoxOption3',
-    } as const;
-
-    this.radioButton = (label) =>
-      page.locator(`input.radioButton[value="${radioValueByLabel[label]}"]`);
+    this.radioButton = (label) => page.getByRole('radio', { name: label });
     this.radioLabelText = (label) => page.locator('label').filter({ hasText: label });
     this.autocompleteInput = page.locator('#autocomplete');
     this.dropdown = page.locator('#dropdown-class-example');
-    this.checkbox = (label) => page.locator(`#${checkboxIdByLabel[label]}`);
+    this.checkbox = (label) => page.getByRole('checkbox', { name: label });
 
     this.openWindowButton = page.locator('#openwindow');
     this.openTabLink = page.locator('#opentab');
@@ -65,9 +52,7 @@ export class PracticePage {
     this.alertButton = page.locator('#alertbtn');
     this.confirmButton = page.locator('#confirmbtn');
 
-    // Note: the source markup reuses id="product" on two different <table> elements
-    // (a real bug in the practice page). We disambiguate by DOM order / container.
-    this.coursesTable = page.locator('table#product').first();
+    this.coursesTable = page.locator('table#product');
     this.coursesTableRows = this.coursesTable.locator('tbody tr').filter({ hasNot: page.locator('th') });
 
     this.hideButton = page.locator('#hide-textbox');

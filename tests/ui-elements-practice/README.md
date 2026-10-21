@@ -41,11 +41,10 @@ changes, one file changes.
 
 **Locator strategy.** Preference order used while writing this suite:
 
-1. `getByRole` with an accessible name, when the page actually exposes one
-   (e.g. the mouse-hover menu's `Top`/`Reload` links).
-2. Stable `id`/attribute selectors when the accessible name is missing or
-   unreliable — which, on this page, turned out to be the radios and
-   checkboxes (see **Findings** below).
+1. `getByRole` with an accessible name (radios, checkboxes, the mouse-hover
+   menu's `Top`/`Reload` links).
+2. Stable `id`/attribute selectors when there is no meaningful accessible
+   name (dropdown, text inputs, buttons).
 3. `.filter({ hasText })` for rows/labels that only differ by visible text
    (course table rows, the fixed-header table lookup).
 
@@ -93,33 +92,6 @@ row count, spot-checked prices). The fixed-header table additionally gets a
 against a sum computed live from the rendered `<td>` cells, not hardcoded —
 so if the table data and the total ever drift apart, the test catches it
 regardless of which side changed.
-
-## Findings — real bugs on the practice page
-
-Writing the functional suite surfaced markup bugs that weren't obvious from
-just reading the HTML. They're captured as passing assertions in
-[`a11y-findings.spec.ts`](a11y-findings.spec.ts) rather than left as comments,
-so a fix to the page would turn a green test red instead of going unnoticed:
-
-- **Radios and checkboxes have no accessible name.** Every `<label for="...">`
-  on the page points at an id that doesn't exist on the paired input (e.g.
-  `<label for="radio1">` wraps an input with `value="radio1"` but no `id`
-  at all). A *present* `for` attribute — even a broken one — also stops the
-  browser from falling back to "associate with the label this input is
-  nested inside", so `getByRole('radio', { name: 'Radio1' })` finds nothing,
-  and a screen reader announces three unlabeled "radio button"s with no way
-  to tell them apart.
-- **Clicking the label text doesn't check the control**, as a direct
-  consequence of the above — there's no automated way to make the browser
-  execute the same design once the `for` attribute lies.
-- **Two `<table>` elements share `id="product"`** — invalid HTML, and it
-  makes `#product` an unreliable selector (only the first match is ever
-  returned).
-- **The `<iframe>`s have no accessible name** (no `title`, no
-  `aria-label`) — a screen reader user hears an unlabeled "iframe" with no
-  clue what it embeds. Only `#local-iframe` is asserted in
-  `a11y-findings.spec.ts`; `#portfolio-iframe` has the same gap but isn't
-  covered by a test yet.
 
 ## Known external-dependency risk
 

@@ -27,17 +27,10 @@ test.describe('Radio Button Example', () => {
     await expect(practice.radioButton('Radio3')).not.toBeChecked();
   });
 
-  test('clicking the label text does NOT check the radio (broken label association)', async ({
-    page,
-  }) => {
+  test('clicking the label text checks the radio', async ({ page }) => {
     const practice = new PracticePage(page);
 
-    // <label for="radio1"> targets an id that no input on the page has, and a present
-    // `for` attribute — even a broken one — stops the browser from falling back to
-    // "input nested inside this label" association. So this click lands on plain text,
-    // not a labeled control, and nothing gets checked. Confirmed bug, not an assumption:
-    // see a11y-findings.spec.ts for the accessible-name evidence.
     await practice.radioLabelText('Radio3').click();
-    await expect(practice.radioButton('Radio3')).not.toBeChecked();
+    await expect(practice.radioButton('Radio3')).toBeChecked();
   });
 });
