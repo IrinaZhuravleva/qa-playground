@@ -19,6 +19,7 @@
     "@types/node": "^22.0.0",
     "allure-commandline": "2.44.0",
     "allure-playwright": "^3.0.0",
+    "playwright-smart-reporter": "^4.0.0",
     "typescript": "^5.9.2"
   }
 }

@@ -17,6 +17,12 @@ export default defineConfig({
     ['list'],
     ['html', { open: 'never' }],
     ['allure-playwright', { resultsDir: 'allure-results' }],
+    ['playwright-smart-reporter', {
+      // Paths resolve relative to testDir ('./tests'), so ../ lands in the repo root.
+      outputFile: '../smart-report.html',
+      historyFile: '../test-history.json',
+      maxHistoryRuns: 10,
+    }],
   ],
   use: {
     trace: 'on-first-retry',
