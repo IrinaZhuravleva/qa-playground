@@ -11,3 +11,8 @@ allure-report/
 # Never let future contents of the confidential interview clone leak.
 # (Its README.md is already tracked and harmless; only *new* files here are protected.)
 targets/codility-interview-clone/
+
+# playwright-smart-reporter output
+smart-report.html
+test-history.json
+test-history.runs/
