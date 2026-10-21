@@ -79,8 +79,7 @@ total, show/hide toggling, a CSS `:hover` menu, and an `<iframe>`.
 
 See [`tests/ui-elements-practice/README.md`](tests/ui-elements-practice/README.md)
 for the approach (Page Object structure, locator strategy, and how dialogs /
-new tabs / tables are handled), plus a short write-up of real bugs the suite
-found on the page itself.
+new tabs / tables are handled).
 
 ## CI & reporting
 
