@@ -23,7 +23,7 @@ test.describe('Web Table Example', () => {
 
     const instructors = await practice.coursesTableRows.locator('td:first-child').allTextContents();
     for (const instructor of instructors) {
-      expect(instructor).toBe('Rahul Shetty');
+      expect(instructor).toBe('John Doe');
     }
   });
 
