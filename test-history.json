@@ -1,0 +1,1023 @@
+{
+  "runs": [],
+  "tests": {
+    "[chromium] ui-elements-practice/accessibility.spec.ts::Accessibility and markup › radio inputs have accessible names": [
+      {
+        "passed": true,
+        "duration": 1080,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/accessibility.spec.ts::Accessibility and markup › checkbox inputs have accessible names": [
+      {
+        "passed": true,
+        "duration": 1081,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/accessibility.spec.ts::Accessibility and markup › every id on the page is unique": [
+      {
+        "passed": true,
+        "duration": 1083,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/accessibility.spec.ts::Accessibility and markup › clicking the label text toggles the radio and the checkbox": [
+      {
+        "passed": true,
+        "duration": 1154,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/accessibility.spec.ts::Accessibility and markup › every iframe has an accessible name": [
+      {
+        "passed": true,
+        "duration": 951,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/alerts.spec.ts::Switch To Alert Example › alert asks for a name when the field is empty": [
+      {
+        "passed": true,
+        "duration": 948,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/alerts.spec.ts::Switch To Alert Example › alert greets the entered name": [
+      {
+        "passed": true,
+        "duration": 977,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/alerts.spec.ts::Switch To Alert Example › confirm dialog text changes based on whether a name was entered": [
+      {
+        "passed": true,
+        "duration": 1020,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/alerts.spec.ts::Switch To Alert Example › dismissing confirm logs the Cancel branch to the console": [
+      {
+        "passed": true,
+        "duration": 611,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/autocomplete-input.spec.ts::Suggestion Class Example (autocomplete input) › accepts free text input": [
+      {
+        "passed": true,
+        "duration": 589,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/alerts.spec.ts::Switch To Alert Example › accepting confirm logs the OK branch to the console": [
+      {
+        "passed": true,
+        "duration": 674,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/autocomplete-input.spec.ts::Suggestion Class Example (autocomplete input) › shows the placeholder when empty": [
+      {
+        "passed": true,
+        "duration": 578,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/checkboxes.spec.ts::Checkbox Example › none are checked by default": [
+      {
+        "passed": true,
+        "duration": 405,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/checkboxes.spec.ts::Checkbox Example › checkboxes toggle independently": [
+      {
+        "passed": true,
+        "duration": 529,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/checkboxes.spec.ts::Checkbox Example › all three can be checked at once (unlike the radio group)": [
+      {
+        "passed": true,
+        "duration": 538,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/dropdown.spec.ts::Dropdown Example › lists the expected options in order": [
+      {
+        "passed": true,
+        "duration": 434,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/dropdown.spec.ts::Dropdown Example › defaults to the placeholder \"Select\" option": [
+      {
+        "passed": true,
+        "duration": 324,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/dropdown.spec.ts::Dropdown Example › selecting an option by label updates the value": [
+      {
+        "passed": true,
+        "duration": 403,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: single emoji": [
+      {
+        "passed": true,
+        "duration": 446,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: several emoji": [
+      {
+        "passed": true,
+        "duration": 444,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: ZWJ family sequence": [
+      {
+        "passed": true,
+        "duration": 493,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: skin-tone modifier": [
+      {
+        "passed": true,
+        "duration": 663,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: emoji mixed with text": [
+      {
+        "passed": true,
+        "duration": 362,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › keeps the value intact: flag (regional indicators)": [
+      {
+        "passed": true,
+        "duration": 414,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › can be cleared after emoji input": [
+      {
+        "passed": true,
+        "duration": 511,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › accepts emoji typed key by key, not only filled in one go": [
+      {
+        "passed": true,
+        "duration": 554,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: single emoji": [
+      {
+        "passed": true,
+        "duration": 530,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: autocomplete field › a multi-code-point emoji is still a single character after input": [
+      {
+        "passed": true,
+        "duration": 569,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: skin-tone modifier": [
+      {
+        "passed": true,
+        "duration": 420,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: several emoji": [
+      {
+        "passed": true,
+        "duration": 450,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: ZWJ family sequence": [
+      {
+        "passed": true,
+        "duration": 414,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: flag (regional indicators)": [
+      {
+        "passed": true,
+        "duration": 431,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: name field and alert › alert greets the name unchanged: emoji mixed with text": [
+      {
+        "passed": true,
+        "duration": 511,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: show/hide field › keeps emoji after the field is hidden and shown again": [
+      {
+        "passed": true,
+        "duration": 517,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: single emoji": [
+      {
+        "passed": true,
+        "duration": 595,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: several emoji": [
+      {
+        "passed": true,
+        "duration": 588,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: skin-tone modifier": [
+      {
+        "passed": true,
+        "duration": 781,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: ZWJ family sequence": [
+      {
+        "passed": true,
+        "duration": 767,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: flag (regional indicators)": [
+      {
+        "passed": true,
+        "duration": 684,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › submitted result echoes the name unchanged: emoji mixed with text": [
+      {
+        "passed": true,
+        "duration": 669,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/fixed-header-table.spec.ts::Web Table Fixed Header Example › the displayed total matches the sum of the Amount column": [
+      {
+        "passed": true,
+        "duration": 392,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/fixed-header-table.spec.ts::Web Table Fixed Header Example › lists all 9 rows even though only part of the table is visible": [
+      {
+        "passed": true,
+        "duration": 382,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/fixed-header-table.spec.ts::Web Table Fixed Header Example › the header stays pinned to the top while the body scrolls": [
+      {
+        "passed": true,
+        "duration": 387,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/emoji-input.spec.ts::Emoji input: form inside the iframe › a name made only of emoji passes validation (it is not treated as empty)": [
+      {
+        "passed": true,
+        "duration": 484,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/hide-show.spec.ts::Element Displayed Example › the text field is visible on load": [
+      {
+        "passed": true,
+        "duration": 395,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the iframe points at the local iframe page": [
+      {
+        "passed": true,
+        "duration": 344,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/hide-show.spec.ts::Element Displayed Example › Hide removes the field and Show brings it back": [
+      {
+        "passed": true,
+        "duration": 416,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/hide-show.spec.ts::Element Displayed Example › clicking Hide twice keeps the field hidden": [
+      {
+        "passed": true,
+        "duration": 449,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › form fields inside the iframe reflect their state": [
+      {
+        "passed": true,
+        "duration": 479,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the form inside the iframe can be filled and submitted (CSS locators)": [
+      {
+        "passed": true,
+        "duration": 527,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the form inside the iframe can be filled and submitted (user-facing locators)": [
+      {
+        "passed": true,
+        "duration": 541,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › submitting an empty name shows a validation error": [
+      {
+        "passed": true,
+        "duration": 511,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the table inside the iframe can be queried by cell and row": [
+      {
+        "passed": true,
+        "duration": 350,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the iframe can be reached by its name attribute via page.frame()": [
+      {
+        "passed": true,
+        "duration": 347,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › the frame finishes loading and resolves to the local iframe page": [
+      {
+        "passed": true,
+        "duration": 403,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::iFrame Example › submitting without accepting the terms is rejected": [
+      {
+        "passed": true,
+        "duration": 496,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::External iFrame Example › the iframe points at the portfolio site": [
+      {
+        "passed": true,
+        "duration": 471,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/mouse-hover.spec.ts::Mouse Hover Example › the menu is hidden until the button is hovered": [
+      {
+        "passed": true,
+        "duration": 354,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::External iFrame Example › the external iframe can be reached by its name attribute via page.frame()": [
+      {
+        "passed": true,
+        "duration": 396,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/iframe.spec.ts::External iFrame Example › the external iframe renders the portfolio page": [
+      {
+        "passed": true,
+        "duration": 571,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/mouse-hover.spec.ts::Mouse Hover Example › moving away hides the menu again": [
+      {
+        "passed": true,
+        "duration": 462,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/mouse-hover.spec.ts::Mouse Hover Example › hovering reveals Top and Reload links": [
+      {
+        "passed": true,
+        "duration": 500,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/radio-buttons.spec.ts::Radio Button Example › exactly one radio can be checked at a time": [
+      {
+        "passed": true,
+        "duration": 468,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/radio-buttons.spec.ts::Radio Button Example › no radio is selected by default": [
+      {
+        "passed": true,
+        "duration": 363,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/switch-tab.spec.ts::Switch Tab Example › the link points at the expected target= \"_blank\" destination": [
+      {
+        "passed": true,
+        "duration": 363,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/radio-buttons.spec.ts::Radio Button Example › clicking the label text checks the radio": [
+      {
+        "passed": true,
+        "duration": 421,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/switch-window.spec.ts::Switch Window Example › opens example.com in a new window via window.open": [
+      {
+        "passed": true,
+        "duration": 643,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/web-table.spec.ts::Web Table Example › has the expected header columns": [
+      {
+        "passed": true,
+        "duration": 307,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/web-table.spec.ts::Web Table Example › lists 10 courses, all by the same instructor": [
+      {
+        "passed": true,
+        "duration": 318,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/switch-tab.spec.ts::Switch Tab Example › clicking opens a new tab instead of navigating the current page": [
+      {
+        "passed": true,
+        "duration": 971,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/web-table.spec.ts::Web Table Example › contains a known course at the expected price": [
+      {
+        "passed": true,
+        "duration": 296,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] ui-elements-practice/web-table.spec.ts::Web Table Example › the free resume-writing course is priced at 0": [
+      {
+        "passed": true,
+        "duration": 354,
+        "timestamp": "2026-10-21T19:45:38.489Z",
+        "runId": "run-1792611926299",
+        "skipped": false,
+        "retry": 0
+      }
+    ],
+    "[chromium] daily/day-01.spec.ts::цена курса Python": [
+      {
+        "passed": true,
+        "duration": 1261,
+        "timestamp": "2026-10-28T15:39:07.853Z",
+        "runId": "run-1793201945414",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 2895,
+        "timestamp": "2026-11-02T19:50:02.632Z",
+        "runId": "run-1793648997234",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "3edfb7e79f6088b7"
+      },
+      {
+        "passed": true,
+        "duration": 682,
+        "timestamp": "2026-11-02T19:51:34.254Z",
+        "runId": "run-1793649091350",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 702,
+        "timestamp": "2026-11-02T19:52:17.736Z",
+        "runId": "run-1793649133772",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 1063,
+        "timestamp": "2026-11-02T19:58:40.224Z",
+        "runId": "run-1793649518131",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 518,
+        "timestamp": "2026-11-02T19:59:06.643Z",
+        "runId": "run-1793649545258",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 622,
+        "timestamp": "2026-11-02T20:01:08.495Z",
+        "runId": "run-1793649666841",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": false,
+        "duration": 1225,
+        "timestamp": "2026-11-02T20:09:22.897Z",
+        "runId": "run-1793650160165",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "f33ee4451fd6f7f1"
+      },
+      {
+        "passed": false,
+        "duration": 648,
+        "timestamp": "2026-11-02T20:11:13.126Z",
+        "runId": "run-1793650271009",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "f33ee4451fd6f7f1"
+      },
+      {
+        "passed": false,
+        "duration": 704,
+        "timestamp": "2026-11-02T20:12:33.940Z",
+        "runId": "run-1793650351759",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "3edfb7e79f6088b7"
+      }
+    ],
+    "[firefox] daily/day-01.spec.ts::цена курса Python": [
+      {
+        "passed": false,
+        "duration": 1,
+        "timestamp": "2026-11-02T19:50:02.632Z",
+        "runId": "run-1793648997234",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "c281dd9a592804d3"
+      },
+      {
+        "passed": false,
+        "duration": 2,
+        "timestamp": "2026-11-02T19:51:34.254Z",
+        "runId": "run-1793649091350",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "c281dd9a592804d3"
+      },
+      {
+        "passed": false,
+        "duration": 2,
+        "timestamp": "2026-11-02T19:52:17.736Z",
+        "runId": "run-1793649133772",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "b5ef31acfdf3bc7a"
+      }
+    ],
+    "[webkit] daily/day-01.spec.ts::цена курса Python": [
+      {
+        "passed": false,
+        "duration": 1208,
+        "timestamp": "2026-11-02T19:50:02.632Z",
+        "runId": "run-1793648997234",
+        "skipped": false,
+        "retry": 0,
+        "clusterId": "3edfb7e79f6088b7"
+      },
+      {
+        "passed": true,
+        "duration": 1152,
+        "timestamp": "2026-11-02T19:51:34.254Z",
+        "runId": "run-1793649091350",
+        "skipped": false,
+        "retry": 0
+      },
+      {
+        "passed": true,
+        "duration": 1638,
+        "timestamp": "2026-11-02T19:52:17.736Z",
+        "runId": "run-1793649133772",
+        "skipped": false,
+        "retry": 0
+      }
+    ]
+  },
+  "summaries": [
+    {
+      "runId": "run-1793201945414",
+      "timestamp": "2026-10-28T15:39:05.414Z",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2439,
+      "passRate": 100,
+      "stabilityGrade": "A"
+    },
+    {
+      "runId": "run-1793648997234",
+      "timestamp": "2026-11-02T19:49:57.234Z",
+      "total": 3,
+      "passed": 0,
+      "failed": 3,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 5398,
+      "passRate": 0,
+      "stabilityGrade": "B"
+    },
+    {
+      "runId": "run-1793649091350",
+      "timestamp": "2026-11-02T19:51:31.350Z",
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2904,
+      "passRate": 67,
+      "stabilityGrade": "C"
+    },
+    {
+      "runId": "run-1793649133772",
+      "timestamp": "2026-11-02T19:52:13.772Z",
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 3964,
+      "passRate": 67,
+      "stabilityGrade": "C"
+    },
+    {
+      "runId": "run-1793649518131",
+      "timestamp": "2026-11-02T19:58:38.131Z",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2093,
+      "passRate": 100,
+      "stabilityGrade": "A"
+    },
+    {
+      "runId": "run-1793649545258",
+      "timestamp": "2026-11-02T19:59:05.258Z",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 1385,
+      "passRate": 100,
+      "stabilityGrade": "A"
+    },
+    {
+      "runId": "run-1793649666841",
+      "timestamp": "2026-11-02T20:01:06.841Z",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 1654,
+      "passRate": 100,
+      "stabilityGrade": "A"
+    },
+    {
+      "runId": "run-1793650160165",
+      "timestamp": "2026-11-02T20:09:20.165Z",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2732,
+      "passRate": 0,
+      "stabilityGrade": "C"
+    },
+    {
+      "runId": "run-1793650271009",
+      "timestamp": "2026-11-02T20:11:11.009Z",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2117,
+      "passRate": 0,
+      "stabilityGrade": "C"
+    },
+    {
+      "runId": "run-1793650351759",
+      "timestamp": "2026-11-02T20:12:31.759Z",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "flaky": 0,
+      "slow": 0,
+      "duration": 2181,
+      "passRate": 0,
+      "stabilityGrade": "D"
+    }
+  ],
+  "forecasts": {
+    "run-1793201945414": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.21
+    },
+    "run-1793648997234": {},
+    "run-1793649091350": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.95
+    },
+    "run-1793649133772": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.95
+    },
+    "run-1793649518131": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.9
+    },
+    "run-1793649545258": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.63
+    },
+    "run-1793649666841": {
+      "[chromium] daily/day-01.spec.ts::цена курса Python": 0.42
+    },
+    "run-1793650160165": {},
+    "run-1793650271009": {},
+    "run-1793650351759": {}
+  }
+}
