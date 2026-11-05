@@ -1,0 +1,167 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui-elements-practice/emoji-input.spec.ts >> Emoji input: autocomplete field >> keeps the value intact: ZWJ family sequence
+- Location: tests/ui-elements-practice/emoji-input.spec.ts:23:5
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.fill: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('#autocomplete')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - heading "page not found" [level=1] [ref=e3]
+  - list [ref=e37]:
+    - listitem [ref=e38]:
+      - text: powered by
+      - link "surge.sh" [ref=e39] [cursor=pointer]:
+        - /url: https://surge.sh
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect, type Dialog } from '@playwright/test';
+  2   | import { PracticePage } from './pages/PracticePage';
+  3   | 
+  4   | // Emoji are a classic input edge case: they live outside the BMP (two UTF-16 code
+  5   | // units), and ZWJ sequences / flags / skin-tone modifiers glue several code points into
+  6   | // one visible character. A field that truncates, re-encodes or mangles any of these
+  7   | // would still pass every plain-ASCII test, so each text input gets the same set here.
+  8   | const emojiCases = [
+  9   |   { label: 'single emoji', value: '😀' },
+  10  |   { label: 'several emoji', value: '🚀🔥✅' },
+  11  |   { label: 'skin-tone modifier', value: '👍🏽' },
+  12  |   { label: 'ZWJ family sequence', value: '👨‍👩‍👧' },
+  13  |   { label: 'flag (regional indicators)', value: '🇩🇪' },
+  14  |   { label: 'emoji mixed with text', value: 'Hi 👋 Irina' },
+  15  | ];
+  16  | 
+  17  | test.describe('Emoji input: autocomplete field', () => {
+  18  |   test.beforeEach(async ({ page }) => {
+  19  |     await new PracticePage(page).goto();
+  20  |   });
+  21  | 
+  22  |   for (const { label, value } of emojiCases) {
+  23  |     test(`keeps the value intact: ${label}`, async ({ page }) => {
+  24  |       const practice = new PracticePage(page);
+  25  | 
+> 26  |       await practice.autocompleteInput.fill(value);
+      |                                        ^ Error: locator.fill: Test timeout of 30000ms exceeded.
+  27  | 
+  28  |       await expect(practice.autocompleteInput).toHaveValue(value);
+  29  |     });
+  30  |   }
+  31  | 
+  32  |   test('accepts emoji typed key by key, not only filled in one go', async ({ page }) => {
+  33  |     const practice = new PracticePage(page);
+  34  | 
+  35  |     await practice.autocompleteInput.pressSequentially('Go 🇩🇪 team 🚀');
+  36  | 
+  37  |     await expect(practice.autocompleteInput).toHaveValue('Go 🇩🇪 team 🚀');
+  38  |   });
+  39  | 
+  40  |   test('a multi-code-point emoji is still a single character after input', async ({ page }) => {
+  41  |     const practice = new PracticePage(page);
+  42  |     await practice.autocompleteInput.fill('👨‍👩‍👧');
+  43  | 
+  44  |     const graphemes = await practice.autocompleteInput.evaluate((el: HTMLInputElement) => {
+  45  |       return [...new Intl.Segmenter().segment(el.value)].length;
+  46  |     });
+  47  | 
+  48  |     expect(graphemes).toBe(1);
+  49  |   });
+  50  | 
+  51  |   test('can be cleared after emoji input', async ({ page }) => {
+  52  |     const practice = new PracticePage(page);
+  53  |     await practice.autocompleteInput.fill('🔥🔥🔥');
+  54  | 
+  55  |     await practice.autocompleteInput.clear();
+  56  | 
+  57  |     await expect(practice.autocompleteInput).toHaveValue('');
+  58  |   });
+  59  | });
+  60  | 
+  61  | test.describe('Emoji input: name field and alert', () => {
+  62  |   test.beforeEach(async ({ page }) => {
+  63  |     await new PracticePage(page).goto();
+  64  |   });
+  65  | 
+  66  |   for (const { label, value } of emojiCases) {
+  67  |     test(`alert greets the name unchanged: ${label}`, async ({ page }) => {
+  68  |       const practice = new PracticePage(page);
+  69  |       await practice.enterName(value);
+  70  |       await expect(practice.nameInput).toHaveValue(value);
+  71  | 
+  72  |       let captured: Dialog | undefined;
+  73  |       page.once('dialog', (dialog) => {
+  74  |         captured = dialog;
+  75  |         void dialog.accept();
+  76  |       });
+  77  |       await practice.alertButton.click();
+  78  | 
+  79  |       expect(captured?.type()).toBe('alert');
+  80  |       expect(captured?.message()).toBe(`Hello ${value}`);
+  81  |     });
+  82  |   }
+  83  | });
+  84  | 
+  85  | test.describe('Emoji input: show/hide field', () => {
+  86  |   test.beforeEach(async ({ page }) => {
+  87  |     await new PracticePage(page).goto();
+  88  |   });
+  89  | 
+  90  |   test('keeps emoji after the field is hidden and shown again', async ({ page }) => {
+  91  |     const practice = new PracticePage(page);
+  92  |     await practice.displayedTextInput.fill('🙈 hidden 🙉');
+  93  | 
+  94  |     await practice.hideButton.click();
+  95  |     await expect(practice.displayedTextInput).toBeHidden();
+  96  |     await practice.showButton.click();
+  97  | 
+  98  |     await expect(practice.displayedTextInput).toBeVisible();
+  99  |     await expect(practice.displayedTextInput).toHaveValue('🙈 hidden 🙉');
+  100 |   });
+  101 | });
+  102 | 
+  103 | test.describe('Emoji input: form inside the iframe', () => {
+  104 |   test.beforeEach(async ({ page }) => {
+  105 |     await new PracticePage(page).goto();
+  106 |   });
+  107 | 
+  108 |   for (const { label, value } of emojiCases) {
+  109 |     test(`submitted result echoes the name unchanged: ${label}`, async ({ page }) => {
+  110 |       const frame = new PracticePage(page).localIframe.contentFrame();
+  111 | 
+  112 |       await frame.getByLabel('Name').fill(value);
+  113 |       await frame.getByLabel('Country').selectOption('uk');
+  114 |       await frame.getByRole('checkbox').check();
+  115 |       await frame.getByRole('button', { name: 'Submit' }).click();
+  116 | 
+  117 |       await expect(frame.locator('#iframe-result')).toHaveText(`Submitted: ${value} - uk`);
+  118 |     });
+  119 |   }
+  120 | 
+  121 |   test('a name made only of emoji passes validation (it is not treated as empty)', async ({ page }) => {
+  122 |     const frame = new PracticePage(page).localIframe.contentFrame();
+  123 | 
+  124 |     await frame.getByLabel('Name').fill('😀');
+  125 |     await frame.getByRole('button', { name: 'Submit' }).click();
+  126 | 
+```
