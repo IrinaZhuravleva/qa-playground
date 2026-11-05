@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "summary": {
+    "runId": "run-1793648997234",
+    "timestamp": "2026-11-02T19:49:57.234Z",
+    "total": 3,
+    "passed": 0,
+    "failed": 3,
+    "skipped": 0,
+    "flaky": 0,
+    "slow": 0,
+    "duration": 5398,
+    "passRate": 0,
+    "stabilityGrade": "B"
+  },
+  "tests": {
+    "[firefox] daily/day-01.spec.ts::цена курса Python": {
+      "passed": false,
+      "duration": 1,
+      "timestamp": "2026-11-02T19:50:02.632Z",
+      "runId": "run-1793648997234",
+      "skipped": false,
+      "retry": 0,
+      "clusterId": "c281dd9a592804d3"
+    },
+    "[chromium] daily/day-01.spec.ts::цена курса Python": {
+      "passed": false,
+      "duration": 2895,
+      "timestamp": "2026-11-02T19:50:02.632Z",
+      "runId": "run-1793648997234",
+      "skipped": false,
+      "retry": 0,
+      "clusterId": "3edfb7e79f6088b7"
+    },
+    "[webkit] daily/day-01.spec.ts::цена курса Python": {
+      "passed": false,
+      "duration": 1208,
+      "timestamp": "2026-11-02T19:50:02.632Z",
+      "runId": "run-1793648997234",
+      "skipped": false,
+      "retry": 0,
+      "clusterId": "3edfb7e79f6088b7"
+    }
+  },
+  "forecasts": {}
+}
