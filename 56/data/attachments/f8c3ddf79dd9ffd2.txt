@@ -1,0 +1,13 @@
+[
+  'Instructor\tCourse\tPrice\n' +
+    'John Smith\tSelenium Webdriver with Java Basics + Advanced + Interview Guide\t30\n' +
+    'John Smith\tLearn SQL in Practical + Database Testing from Scratch\t25\n' +
+    'John Smith\tAppium (Selenium) - Mobile Automation Testing from Scratch\t30\n' +
+    'John Smith\tWebSecurity Testing for Beginners-QA knowledge to next level\t20\n' +
+    'John Smith\tLearn JMETER from Scratch - (Performance + Load) Testing Tool\t25\n' +
+    'John Smith\tWebServices / REST API Testing with SoapUI\t35\n' +
+    'John Smith\tQA Expert Course :Software Testing + Bugzilla + SQL + Agile\t25\n' +
+    'John Smith\tMaster Selenium Automation in simple Python Language\t25\n' +
+    'John Smith\tAdvanced Selenium Framework Pageobject, TestNG, Maven, Jenkins,C\t20\n' +
+    'John Smith\tWrite effective QA Resume that will turn to interview call\t0'
+]
