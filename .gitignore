@@ -11,3 +11,6 @@ allure-report/
 # Never let future contents of the confidential interview clone leak.
 # (Its README.md is already tracked and harmless; only *new* files here are protected.)
 targets/codility-interview-clone/
+
+# Personal daily practice notes/specs - keep local only.
+tests/daily/
